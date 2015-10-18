@@ -1,6 +1,6 @@
 {
   "name": "hubot-info-rut",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Un script hubot para obtener a quien pertenece un determinado RUT",
   "main": "index.coffee",
   "scripts": {
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/lgaticaq/hubot-info-rut#readme",
   "dependencies": {
-    "info-rut": "0.0.1"
+    "info-rut": "0.0.2"
   },
   "devDependencies": {
     "chai": "^3.3.0",
