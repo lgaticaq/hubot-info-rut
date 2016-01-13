@@ -1,15 +1,7 @@
 language: node_js
 node_js:
-- '0.12'
-- '4'
-- '5'
+  - "0.12"
+  - "4"
+  - "5"
 notifications:
   email: false
-deploy:
-  provider: npm
-  email: lgatica@protonmail.com
-  api_key:
-    secure: XbtGbWiURW6VM7g3Urg6c29EOkSQf43aC2Sjn8vv/6A1R/ZPLzcQ1OvdgBetFbiE00N1JZtzC42rt33PQDW4t6Dn9vnVEmGM5pALwStl5CsXluoO71dcrVkvpi+uZ5zZbTiM3OBcG0RWglfA+GPs6601v5XBknkXgt4Gjz9ZWgn1Y5jxDO93/gyPNFNfhdpHVSvgtyKGJA8b9HfYnCRJwpM1gGybOgEN8BX/EnE14WhxvmHAvY/PHm5Kg6DwqljVlI9EDLhPcrDXV9cIo1FpvR7dyWVHpyEOqAI5E8155ROyEABtaCDfq5axawagXBvKDHaQ8LVuUQ2MOVLbR1ANeqLRYthzhhp/6YUnqNDVvf5y3msdenOaXemPaVSIKYtO0lRNVT/5BPN39cX/YyYc1jkOlq+3Pkd2C7yRcouIZyEG2KY5neWCOL6nWCjehqNO9AsnuoKVmlzR2Wh/LGX46lXJnPzIxZ7Z768hQRi2tzJ84s35ge1sne8hzgInXKx8pocKQsCu01QYgXqZw83Il+3a+bU9VQpplYjTogtA0zICd+51ZblXJsYx3Qs+tjqUPbgUc0lP4UwxwOkn1cMhVNxGZAl7zKSPu+RSHLpEq6o7gkZgXcWJxMCto9jPvfdC6mAQBFe0IA0Su4AITVbtQlbjSSk1HNr3BbJY59OzKXM=
-  on:
-    tags: true
-    repo: lgaticaq/hubot-info-rut
