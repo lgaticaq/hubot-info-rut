@@ -1,6 +1,6 @@
 {
   "name": "hubot-info-rut",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Un script hubot para obtener a quien pertenece un determinado RUT",
   "main": "index.coffee",
   "scripts": {
