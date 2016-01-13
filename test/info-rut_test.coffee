@@ -7,43 +7,93 @@ helper = new Helper("./../src/index.coffee")
 
 describe "info rut", ->
   room = null
+  @timeout(2000)
 
   beforeEach ->
     room = helper.createRoom()
-    do nock.disableNetConnect
+    nock.disableNetConnect()
 
   afterEach ->
     room.destroy()
     nock.cleanAll()
 
-  context "rut valido", ->
+  context "rut valid", ->
     rut = "11111111-1"
 
     beforeEach (done) ->
       nock("http://datos.24x7.cl")
         .get("/rut/#{rut}/")
         .replyWithFile(200, path.join(__dirname, "valid.html"))
-      room.user.say("pepito", "hubot info rut #{rut}")
-      setTimeout(done, 100)
+      room.user.say("pepito", "hubot info-rut rut #{rut}")
+      setTimeout(done, 500)
 
-    it "se espera que obtenga el nombre", ->
+    it "should return a full name", ->
       expect(room.messages).to.eql([
-        ["pepito", "hubot info rut #{rut}"],
+        ["pepito", "hubot info-rut rut #{rut}"],
         ["hubot", "RUT: #{rut}, Nombre: Anonymous"]
       ])
 
-  context "rut invalido", ->
+  context "rut invalid", ->
     rut = "1"
 
     beforeEach (done) ->
       nock("http://datos.24x7.cl")
         .get("/rut/#{rut}/")
         .replyWithFile(404, path.join(__dirname, "invalid.html"))
-      room.user.say("pepito", "hubot info rut #{rut}")
+      room.user.say("pepito", "hubot info-rut rut #{rut}")
+      setTimeout(done, 500)
+
+    it "should return a error", ->
+      expect(room.messages).to.eql([
+        ["pepito", "hubot info-rut rut #{rut}"],
+        ["hubot", "@pepito ocurrio un error al consultar el rut"]
+      ])
+
+  context "name valid", ->
+    name = "perez"
+
+    beforeEach (done) ->
+      form =
+        entrada: name,
+        csrfmiddlewaretoken: "asdf"
+      nock("http://datos.24x7.cl")
+        .get("/")
+        .replyWithFile(200, path.join(__dirname, "form.html"))
+        .post("/get_generic_ajax/", form)
+        .reply(200, {
+          status: "success",
+          value: [
+            {name: "JUAN PEREZ", rut: "11111111-1"},
+            {name: "PEDRO PEREZ", rut: "22222222-2"}
+          ]
+        })
+      room.user.say("pepito", "hubot info-rut nombre #{name}")
+      setTimeout(done, 500)
+
+    it "should return a array of results", ->
+      expect(room.messages).to.eql([
+        ["pepito", "hubot info-rut nombre #{name}"],
+        ["hubot", "RUT: 11111111-1, Nombre: JUAN PEREZ"]
+        ["hubot", "RUT: 22222222-2, Nombre: PEDRO PEREZ"]
+      ])
+
+  context "name invalid", ->
+    name = "asdf"
+
+    beforeEach (done) ->
+      form =
+        entrada: name,
+        csrfmiddlewaretoken: "asdf"
+      nock("http://datos.24x7.cl")
+        .get("/")
+        .replyWithFile(200, path.join(__dirname, "form.html"))
+        .post("/get_generic_ajax/", form)
+        .reply(200, {status: 'fail', value: []})
+      room.user.say("pepito", "hubot info-rut nombre #{name}")
       setTimeout(done, 100)
 
-    it "se espera que obtenga mensaje de error", ->
+    it "should return a empty results", ->
       expect(room.messages).to.eql([
-        ["pepito", "hubot info rut #{rut}"],
-        ["hubot", "RUT no encontrado"]
+        ["pepito", "hubot info-rut nombre #{name}"],
+        ["hubot", "@pepito no hay resultados para #{name}"]
       ])
