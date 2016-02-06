@@ -5,8 +5,8 @@
 #   "info-rut": "^1.0.0"
 #
 # Commands:
-#   hubot info-rut rut <rut> -> RUT: <rut>, Nombre: <nombre>
-#   hubot info-rut nombre <nombre> -> RUT: <rut>, Nombre: <nombre>
+#   hubot info-rut rut <rut> -> Obtiene nombre a partir de un rut
+#   hubot info-rut nombre <nombre> -> Obtiene rut a partir de un nombre
 #
 # Author:
 #   lgaticaq
