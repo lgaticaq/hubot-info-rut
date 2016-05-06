@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/lgaticaq/hubot-info-rut#readme",
   "dependencies": {
-    "info-rut": "^1.0.0"
+    "info-rut": "^2.0.0"
   },
   "devDependencies": {
     "chai": "^3.4.1",
