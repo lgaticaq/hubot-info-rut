@@ -25,7 +25,7 @@ describe "info rut", ->
         .get("/rut/#{rut}/")
         .replyWithFile(200, path.join(__dirname, "valid.html"))
       room.user.say("pepito", "hubot info-rut rut #{rut}")
-      setTimeout(done, 500)
+      setTimeout(done, 1000)
 
     it "should return a full name", ->
       expect(room.messages).to.eql([
@@ -41,7 +41,7 @@ describe "info rut", ->
         .get("/rut/#{rut}/")
         .replyWithFile(404, path.join(__dirname, "invalid.html"))
       room.user.say("pepito", "hubot info-rut rut #{rut}")
-      setTimeout(done, 500)
+      setTimeout(done, 1000)
 
     it "should return a error", ->
       expect(room.messages).to.eql([
@@ -68,7 +68,7 @@ describe "info rut", ->
           ]
         })
       room.user.say("pepito", "hubot info-rut nombre #{name}")
-      setTimeout(done, 500)
+      setTimeout(done, 1000)
 
     it "should return a array of results", ->
       expect(room.messages).to.eql([

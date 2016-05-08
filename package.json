@@ -4,10 +4,12 @@
   "description": "Un script hubot para obtener a quien pertenece un determinado RUT",
   "main": "index.coffee",
   "scripts": {
-    "test": "mocha --compilers coffee:coffee-script/register"
+    "test": "mocha --compilers coffee:coffee-script/register --require coffee-coverage/register-istanbul",
+    "posttest": "istanbul report text-summary lcov",
+    "coveralls": "coveralls < coverage/lcov.info"
   },
   "engines": {
-    "node": ">=0.12"
+    "node": ">=4"
   },
   "repository": {
     "type": "git",
@@ -25,13 +27,16 @@
   },
   "homepage": "https://github.com/lgaticaq/hubot-info-rut#readme",
   "dependencies": {
-    "info-rut": "^1.0.0"
+    "info-rut": "^2.0.0"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
+    "chai": "^3.5.0",
+    "coffee-coverage": "^1.0.1",
     "coffee-script": "^1.10.0",
+    "coveralls": "^2.11.9",
     "hubot-test-helper": "^1.4.4",
-    "mocha": "^2.3.4",
+    "istanbul": "^0.4.3",
+    "mocha": "^2.4.5",
     "nock": "^8.0.0"
   }
 }
