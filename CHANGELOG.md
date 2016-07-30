@@ -1,3 +1,9 @@
+#### 1.0.5 (2016-7-30)
+
+##### Bug Fixes
+
+* **package:** Update info-rut to v2.0.3 ([3dd36acc](https://github.com/lgaticaq/hubot-info-rut/commit/3dd36acc6df6e29a0dfa9f5fe5d7b6d70b3d31b0))
+
 #### 1.0.4 (2016-7-30)
 
 ##### Chores
