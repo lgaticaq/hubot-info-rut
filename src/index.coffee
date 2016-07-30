@@ -2,7 +2,7 @@
 #   Obtiene el nombre de la persona o empresa del RUT consultado y viceversa
 #
 # Dependencies:
-#   "info-rut": "^2.0.1"
+#   "info-rut": "^2.0.2"
 #
 # Commands:
 #   hubot info-rut rut <rut> -> Obtiene nombre a partir de un rut
