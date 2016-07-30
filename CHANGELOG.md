@@ -1,3 +1,19 @@
+#### 1.0.4 (2016-7-30)
+
+##### Chores
+
+* **package:**
+  * Update dependencies ([def7cd5d](https://github.com/lgaticaq/hubot-info-rut/commit/def7cd5d2b6dc0c0b23b6952382bf824b5d770b3))
+  * update mocha to version 2.5.0 ([293f7c5f](https://github.com/lgaticaq/hubot-info-rut/commit/293f7c5f0d00a22aeb86e1b62a74eb9733b882d2))
+
+##### New Features
+
+* **respond:** Return multiple results with attachments ([b5f57c55](https://github.com/lgaticaq/hubot-info-rut/commit/b5f57c55b4b7fd977f1053531a7ec21ad8d72aae))
+
+##### Bug Fixes
+
+* **package:** Update info-rut ([03300dcf](https://github.com/lgaticaq/hubot-info-rut/commit/03300dcfa00f195a56fab6d417f81cd045577244))
+
 #### 1.0.3 (2016-05-08)
 
 * Add coverage, migrate to node 6 ([e78e5ac](https://github.com/lgaticaq/hubot-info-rut/commit/e78e5ac))
