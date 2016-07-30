@@ -1,7 +1,24 @@
 path = require("path")
 Helper = require("hubot-test-helper")
 expect = require("chai").expect
-nock = require("nock")
+proxyquire = require("proxyquire")
+infoRutStub =
+  getFullName: (rut) ->
+    return new Promise (resolve, reject) ->
+      if rut is "11111111-1"
+        resolve("Anonymous")
+      else
+        reject(new Error("Not found"))
+  getRut: (name) ->
+    return new Promise (resolve, reject) ->
+      if name is "perez"
+        results = [{rut: "11111111-1", fullName: "Anonymous"}]
+        resolve(results)
+      else if name is "info-rut"
+        resolve([])
+      else
+        reject(new Error("Not found"))
+proxyquire("./../src/script.coffee", {"info-rut": infoRutStub})
 
 helper = new Helper("./../src/index.coffee")
 
@@ -11,25 +28,20 @@ describe "info rut", ->
 
   beforeEach ->
     room = helper.createRoom()
-    nock.disableNetConnect()
 
   afterEach ->
     room.destroy()
-    nock.cleanAll()
 
   context "rut valid", ->
     rut = "11111111-1"
 
     beforeEach (done) ->
-      nock("http://datos.24x7.cl")
-        .get("/rut/#{rut}/")
-        .replyWithFile(200, path.join(__dirname, "valid.html"))
-      room.user.say("pepito", "hubot info-rut rut #{rut}")
+      room.user.say("user", "hubot info-rut rut #{rut}")
       setTimeout(done, 1000)
 
     it "should return a full name", ->
       expect(room.messages).to.eql([
-        ["pepito", "hubot info-rut rut #{rut}"],
+        ["user", "hubot info-rut rut #{rut}"],
         ["hubot", "RUT: #{rut}, Nombre: Anonymous"]
       ])
 
@@ -37,61 +49,49 @@ describe "info rut", ->
     rut = "1"
 
     beforeEach (done) ->
-      nock("http://datos.24x7.cl")
-        .get("/rut/#{rut}/")
-        .replyWithFile(404, path.join(__dirname, "invalid.html"))
-      room.user.say("pepito", "hubot info-rut rut #{rut}")
+      room.user.say("user", "hubot info-rut rut #{rut}")
       setTimeout(done, 1000)
 
     it "should return a error", ->
       expect(room.messages).to.eql([
-        ["pepito", "hubot info-rut rut #{rut}"],
-        ["hubot", "@pepito ocurrio un error al consultar el rut"]
+        ["user", "hubot info-rut rut #{rut}"],
+        ["hubot", "@user ocurrio un error al consultar el rut"]
       ])
 
   context "name valid", ->
     name = "perez"
 
     beforeEach (done) ->
-      form =
-        entrada: name,
-        csrfmiddlewaretoken: "asdf"
-      nock("http://datos.24x7.cl")
-        .get("/")
-        .replyWithFile(200, path.join(__dirname, "form.html"))
-        .post("/get_generic_ajax/", form)
-        .reply(200, {
-          status: "success",
-          value: [
-            {name: "JUAN PEREZ", rut: 111111111},
-            {name: "PEDRO PEREZ", rut: 222222222}
-          ]
-        })
-      room.user.say("pepito", "hubot info-rut nombre #{name}")
+      room.user.say("user", "hubot info-rut nombre #{name}")
       setTimeout(done, 1000)
 
     it "should return a array of results", ->
       expect(room.messages).to.eql([
-        ["pepito", "hubot info-rut nombre #{name}"]
+        ["user", "hubot info-rut nombre #{name}"]
+      ])
+
+  context "name without results", ->
+    name = "info-rut"
+
+    beforeEach (done) ->
+      room.user.say("user", "hubot info-rut nombre #{name}")
+      setTimeout(done, 100)
+
+    it "should return a empty results", ->
+      expect(room.messages).to.eql([
+        ["user", "hubot info-rut nombre #{name}"],
+        ["hubot", "@user no hay resultados para #{name}"]
       ])
 
   context "name invalid", ->
     name = "asdf"
 
     beforeEach (done) ->
-      form =
-        entrada: name,
-        csrfmiddlewaretoken: "asdf"
-      nock("http://datos.24x7.cl")
-        .get("/")
-        .replyWithFile(200, path.join(__dirname, "form.html"))
-        .post("/get_generic_ajax/", form)
-        .reply(200, {status: 'fail', value: []})
-      room.user.say("pepito", "hubot info-rut nombre #{name}")
+      room.user.say("user", "hubot info-rut nombre #{name}")
       setTimeout(done, 100)
 
     it "should return a empty results", ->
       expect(room.messages).to.eql([
-        ["pepito", "hubot info-rut nombre #{name}"],
-        ["hubot", "@pepito no hay resultados para #{name}"]
+        ["user", "hubot info-rut nombre #{name}"],
+        ["hubot", "@user ocurrio un error al consultar el nombre"]
       ])
