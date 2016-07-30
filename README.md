@@ -11,6 +11,7 @@
 > Un script hubot para obtener a quien pertenece un determinado RUT
 
 ## Instalación
+
 ```bash
 npm i -S hubot-info-rut
 ```
@@ -18,7 +19,9 @@ npm i -S hubot-info-rut
 agregar `["hubot-info-rut"]` en `external-scripts.json`.
 
 ## Ejemplos
+
 `hubot info-rut rut 11111111-1` -> `RUT: 11111111-1, Nombre: Anonymous`
+
 `hubot info-rut nombre perez` -> `RUT: 11111111-1, Nombre: JUAN PEREZ`
 
 ## License
