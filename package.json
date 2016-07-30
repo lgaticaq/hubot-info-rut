@@ -2,7 +2,7 @@
   "name": "hubot-info-rut",
   "version": "1.0.3",
   "description": "Un script hubot para obtener a quien pertenece un determinado RUT",
-  "main": "index.coffee",
+  "main": "src",
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script/register --require coffee-coverage/register-istanbul",
     "posttest": "istanbul report text-summary lcov",
