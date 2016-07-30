@@ -14,6 +14,12 @@
 infoRut = require("info-rut")
 
 module.exports = (robot) ->
+  sendAttachment = (attachments, res) ->
+    data =
+      attachments: attachments
+      channel: res.message.room
+    robot.emit "slack.attachment", data
+
   robot.respond /info-rut rut (.*)/i, (res) ->
     rut = res.match[1]
     infoRut.getFullName(rut)
@@ -28,8 +34,13 @@ module.exports = (robot) ->
     infoRut.getRut(name)
       .then (results) ->
         if results.length > 0
-          for r in results
-            res.send "RUT: #{r.rut}, Nombre: #{r.fullName}"
+          text = results.map((r) ->
+            "RUT: #{r.rut}, Nombre: #{r.fullName}"
+          ).join("\n")
+          attachments =
+            fallback: text
+            text: text
+          sendAttachment attachments, res
         else
           res.reply "no hay resultados para #{name}"
       .catch (err) ->

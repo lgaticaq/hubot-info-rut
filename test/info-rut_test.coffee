@@ -63,8 +63,8 @@ describe "info rut", ->
         .reply(200, {
           status: "success",
           value: [
-            {name: "JUAN PEREZ", rut: "11111111-1"},
-            {name: "PEDRO PEREZ", rut: "22222222-2"}
+            {name: "JUAN PEREZ", rut: 111111111},
+            {name: "PEDRO PEREZ", rut: 222222222}
           ]
         })
       room.user.say("pepito", "hubot info-rut nombre #{name}")
@@ -72,9 +72,7 @@ describe "info rut", ->
 
     it "should return a array of results", ->
       expect(room.messages).to.eql([
-        ["pepito", "hubot info-rut nombre #{name}"],
-        ["hubot", "RUT: 11111111-1, Nombre: JUAN PEREZ"]
-        ["hubot", "RUT: 22222222-2, Nombre: PEDRO PEREZ"]
+        ["pepito", "hubot info-rut nombre #{name}"]
       ])
 
   context "name invalid", ->
