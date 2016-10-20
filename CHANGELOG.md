@@ -1,3 +1,12 @@
+#### 1.0.6 (2016-10-20)
+
+##### Chores
+
+* **package:**
+  * Update dependencies ([470908a2](https://github.com/lgaticaq/hubot-info-rut/commit/470908a2a272634931ae51114471486ebff312f4))
+  * update codeclimate-test-reporter to version 0.4.0 ([699d24f9](https://github.com/lgaticaq/hubot-info-rut/commit/699d24f9ec46c83a9271de897fe030e5b0506416))
+  * update mocha to version 3.0.0 ([e667350d](https://github.com/lgaticaq/hubot-info-rut/commit/e667350daa58b94cb3257e668e1ef40dcd4332b1))
+
 #### 1.0.5 (2016-7-30)
 
 ##### Bug Fixes
