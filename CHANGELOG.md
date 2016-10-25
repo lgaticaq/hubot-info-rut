@@ -1,3 +1,13 @@
+#### 1.0.7 (2016-10-25)
+
+##### Chores
+
+* **package:** Add yarnpkg ([d2e9888b](https://github.com/lgaticaq/hubot-info-rut/commit/d2e9888b4c9ef09effdb2f6671cfc75391b1461b))
+
+##### Bug Fixes
+
+* **script:** Replace send attachment to send text ([4a428bbe](https://github.com/lgaticaq/hubot-info-rut/commit/4a428bbe42fd199b2bcf910ba588d7aedb0d283d))
+
 #### 1.0.6 (2016-10-20)
 
 ##### Chores
