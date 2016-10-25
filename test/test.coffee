@@ -67,7 +67,8 @@ describe "info rut", ->
 
     it "should return a array of results", ->
       expect(room.messages).to.eql([
-        ["user", "hubot info-rut nombre #{name}"]
+        ["user", "hubot info-rut nombre #{name}"],
+        ["hubot", "RUT: 11111111-1, Nombre: Anonymous"]
       ])
 
   context "name without results", ->
