@@ -1,3 +1,16 @@
+## 2.0.0 (2016-10-30)
+
+##### Chores
+
+* **travis:** Add support to node v7 and yarn ([993f3a44](https://github.com/lgaticaq/hubot-info-rut/commit/993f3a4407f89be78e959ab2580def8d66eed660))
+* **package:**
+  * Update yarn ([4f45d681](https://github.com/lgaticaq/hubot-info-rut/commit/4f45d681d1bafea0481d1c0b7f6c117fb71c4ad0))
+  * update info-rut to version 3.0.0 ([0f4890b5](https://github.com/lgaticaq/hubot-info-rut/commit/0f4890b5f3653faa1bd846874e94cd3bd2d7fc1c))
+
+##### New Features
+
+* **script:** Replace `hubot info-rut nombre` with `hubot info-rut persona` and `hubot info-rut empresa` ([0e2aaeef](https://github.com/lgaticaq/hubot-info-rut/commit/0e2aaeef7dab48d449e228c17439c825cb63903a))
+
 #### 1.0.7 (2016-10-25)
 
 ##### Chores
