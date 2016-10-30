@@ -16,13 +16,15 @@
 npm i -S hubot-info-rut
 ```
 
-agregar `["hubot-info-rut"]` en `external-scripts.json`.
+agregar `["hubot-info-rut"]` en `external-scripts.json` y setear `HUBOT_URL` en las variables de entorno.
 
 ## Ejemplos
 
-`hubot info-rut rut 11111111-1` -> `RUT: 11111111-1, Nombre: Anonymous`
+`hubot info-rut rut 11111111-1` -> `Juan Perez (11.111.111-1)`
 
-`hubot info-rut nombre perez` -> `RUT: 11111111-1, Nombre: JUAN PEREZ`
+`hubot info-rut persona perez` -> `Juan Perez (11.111.111-1)`
+
+`hubot info-rut empresa sushi` -> `Sushi (11.111.111-1)`
 
 ## License
 
