@@ -1,3 +1,9 @@
+#### 2.0.1 (2016-11-16)
+
+##### Bug Fixes
+
+* **url:** Fix #8 ([bbfcf7f6](https://github.com/lgaticaq/hubot-info-rut/commit/bbfcf7f6cab14429edf21f033e584295a135f65f))
+
 ## 2.0.0 (2016-10-30)
 
 ##### Chores
