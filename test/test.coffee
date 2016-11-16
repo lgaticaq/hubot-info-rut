@@ -12,7 +12,7 @@ infoRutStub =
         reject(new Error("Not found"))
   getPersonRut: (name) ->
     return new Promise (resolve, reject) ->
-      if name is "perez"
+      if name is "juan perez perez"
         results = [
           {rut: "11.111.111-1", fullName: "Anonymous"},
           {rut: "11.111.111-1", fullName: "Anonymous"},
@@ -85,7 +85,7 @@ describe "info rut", ->
       ])
 
   context "name valid", ->
-    name = "perez"
+    name = "juan perez perez"
 
     beforeEach (done) ->
       room.user.say("user", "hubot info-rut persona #{name}")
@@ -102,7 +102,8 @@ describe "info rut", ->
           "Anonymous (11.111.111-1)\n" +
           "Anonymous (11.111.111-1)\n" +
           "Más resultados en " +
-          "http://localhost:8080/info-rut?name=perez&type=persona"
+          "http://localhost:8080/info-rut?name=juan%20perez%20perez&" +
+          "type=persona"
         ]
       ])
 

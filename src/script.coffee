@@ -15,6 +15,7 @@
 # Author:
 #   lgaticaq
 
+querystring = require("querystring")
 infoRut = require("info-rut")
 
 module.exports = (robot) ->
@@ -35,9 +36,8 @@ module.exports = (robot) ->
     infoRut[fn](name)
       .then (results) ->
         if results.length > 5
-          urlName = name.replace(" ", "%20")
-          urlQuery = "#{url}/info-rut?name=#{urlName}&type=#{type}"
-          more = "\nMás resultados en #{urlQuery}"
+          query = querystring.stringify({name: name, type: type})
+          more = "\nMás resultados en #{url}/info-rut?#{query}"
           res.send results.slice(0, 5).map((r) ->
             "#{r.fullName} (#{r.rut})"
           ).join("\n").concat(more)
