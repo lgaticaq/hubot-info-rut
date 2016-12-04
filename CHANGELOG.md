@@ -1,3 +1,11 @@
+#### 2.0.2 (2016-12-4)
+
+##### Chores
+
+* **travis:** Remove old node version ([50883f61](https://github.com/lgaticaq/hubot-info-rut/commit/50883f61c373db64cad30dce4e9d0a7ec8784a94))
+* **npm:** Update ignores ([9456d9e3](https://github.com/lgaticaq/hubot-info-rut/commit/9456d9e3da9946f41b720b7d1c70605bb5aeff2e))
+* **package:** Update dependencies ([fdf1cc1b](https://github.com/lgaticaq/hubot-info-rut/commit/fdf1cc1ba5231e3c2ed0a860d23822781bef3b10))
+
 #### 2.0.1 (2016-11-16)
 
 ##### Bug Fixes
