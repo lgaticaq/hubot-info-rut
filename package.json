@@ -23,7 +23,8 @@
   "keywords": [
     "hubot",
     "hubot-scripts",
-    "rut"
+    "rut",
+    "huemul-scripts"
   ],
   "author": "Leonardo Gatica <lgatica@protonmail.com> (https://about.me/lgatica)",
   "license": "MIT",
@@ -32,19 +33,19 @@
   },
   "homepage": "https://github.com/lgaticaq/hubot-info-rut#readme",
   "dependencies": {
-    "info-rut": "^3.0.1"
+    "info-rut": "^3.0.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "codeclimate-test-reporter": "^0.4.0",
-    "coffee-coverage": "^2.0.0",
-    "coffee-script": "^1.12.0",
+    "codeclimate-test-reporter": "^0.4.1",
+    "coffee-coverage": "^2.0.1",
+    "coffee-script": "^1.12.4",
     "coffeelint": "^1.16.0",
-    "coveralls": "^2.11.15",
-    "generate-changelog": "^1.0.2",
-    "hubot-test-helper": "^1.5.0",
+    "coveralls": "^2.12.0",
+    "generate-changelog": "^1.1.0",
+    "hubot-test-helper": "^1.5.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
-    "proxyquire": "^1.7.10"
+    "proxyquire": "^1.7.11"
   }
 }
