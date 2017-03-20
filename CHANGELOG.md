@@ -1,3 +1,11 @@
+#### 2.0.3 (2017-3-20)
+
+##### Chores
+
+* **package:**
+  * Update dependencies ([6ce58c27](https://github.com/lgaticaq/hubot-info-rut/commit/6ce58c27adf9c6d51510e4072b485131ce61c9ec))
+  * update coffee-coverage to version 2.0.0 ([53a04933](https://github.com/lgaticaq/hubot-info-rut/commit/53a04933a1a2fb3919dcb41cb9b9188ae82a71ff))
+
 #### 2.0.2 (2016-12-4)
 
 ##### Chores
