@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/hubot-info-rut.svg?style=flat-square)](https://www.npmjs.com/package/hubot-info-rut)
 [![Build Status](https://img.shields.io/travis/lgaticaq/hubot-info-rut.svg?style=flat-square)](https://travis-ci.org/lgaticaq/hubot-info-rut)
 [![Coverage Status](https://img.shields.io/coveralls/lgaticaq/hubot-info-rut/master.svg?style=flat-square)](https://coveralls.io/github/lgaticaq/hubot-info-rut?branch=master)
-[![Code Climate](https://img.shields.io/codeclimate/github/lgaticaq/hubot-info-rut.svg?style=flat-square)](https://codeclimate.com/github/lgaticaq/hubot-info-rut)
+[![Maintainability](https://api.codeclimate.com/v1/badges/aa1fd59f706e5065cfd4/maintainability)](https://codeclimate.com/github/lgaticaq/hubot-info-rut/maintainability)
 [![dependency Status](https://img.shields.io/david/lgaticaq/hubot-info-rut.svg?style=flat-square)](https://david-dm.org/lgaticaq/hubot-info-rut#info=dependencies)
 [![devDependency Status](https://img.shields.io/david/dev/lgaticaq/hubot-info-rut.svg?style=flat-square)](https://david-dm.org/lgaticaq/hubot-info-rut#info=devDependencies)
 
