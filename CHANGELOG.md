@@ -1,3 +1,45 @@
+## 3.0.0 (2018-01-22)
+
+##### Chores
+
+* **deps:**
+  *  update dependency mocha to v4.1.0 ([c1f3edc8](https://github.com/lgaticaq/hubot-info-rut/commit/c1f3edc8c03916696658694c4677279f5f028a25))
+  *  update dependency generate-changelog to v1.7.0 ([25f016a6](https://github.com/lgaticaq/hubot-info-rut/commit/25f016a643ac4405ba53d41c8d8433bce51c9f45))
+  *  update dependency coffee-script to v1.12.8 ([7453dc44](https://github.com/lgaticaq/hubot-info-rut/commit/7453dc44ddebad231bdb98f7bc0d5b9926fe2e58))
+  *  update dependency generate-changelog to v1.6.0 ([67cbbaec](https://github.com/lgaticaq/hubot-info-rut/commit/67cbbaec3d3e8770d29f8961cb115f0c29575591))
+  *  update dependency coffeelint to v2.0.7 ([e1bb76d1](https://github.com/lgaticaq/hubot-info-rut/commit/e1bb76d17cc778420d37543182f1b53cc40f5ab4))
+  *  update dependency hubot-test-helper to v1.8.1 ([60aa57d2](https://github.com/lgaticaq/hubot-info-rut/commit/60aa57d2596355359647e6335e12133647ef8508))
+  *  update dependency hubot-test-helper to v1.8.0 ([da13178f](https://github.com/lgaticaq/hubot-info-rut/commit/da13178fcaa4aa48d1247ae5bda2952c20493e9e))
+  *  update dependency mocha to v4.0.1 ([959a1209](https://github.com/lgaticaq/hubot-info-rut/commit/959a12097ef8c7e38040ee5185f15cdc13608024))
+  *  update dependency coffeelint to v2.0.6 ([799adf20](https://github.com/lgaticaq/hubot-info-rut/commit/799adf20f494ac86851fb1e5ef1e17e66e86ad99))
+  *  update dependency coffeelint to v2.0.5 ([dedc6e31](https://github.com/lgaticaq/hubot-info-rut/commit/dedc6e313f6149a5fd1b7d0057764a97801923e2))
+  *  update dependency coffeelint to v2.0.3 ([f44f0317](https://github.com/lgaticaq/hubot-info-rut/commit/f44f031766eef87d0b51e3847c18afa7790b2b20))
+  *  update dependency mocha to v4.0.0 ([214fe336](https://github.com/lgaticaq/hubot-info-rut/commit/214fe336be9287b051bc503fbfd4a9dd122f9d9c))
+  *  update dependency coveralls to v3.0.0 ([bdcee012](https://github.com/lgaticaq/hubot-info-rut/commit/bdcee0126b25c7c5d96b226927085d2ca9edc96e))
+  *  update dependency coveralls to v2.13.3 ([25c1fbf1](https://github.com/lgaticaq/hubot-info-rut/commit/25c1fbf1c44631efd3481ee921ec95e26bc58d4e))
+  *  update dependency coveralls to v2.13.2 ([0d28b634](https://github.com/lgaticaq/hubot-info-rut/commit/0d28b6344f7449b9f378a8c02aa6111554601987))
+  *  update dependency generate-changelog to v1.5.0 ([6e5db0d0](https://github.com/lgaticaq/hubot-info-rut/commit/6e5db0d0840410e0117ac32cc46ca51ac838f158))
+  *  update dependency mocha to v3.5.3 ([d14e929d](https://github.com/lgaticaq/hubot-info-rut/commit/d14e929de5dec84e4e645ae8eb6f767fc4b7719e))
+  *  update dependency mocha to v3.5.2 ([bb7eb0e1](https://github.com/lgaticaq/hubot-info-rut/commit/bb7eb0e12386e1d7caa43b521b4c49bb8b88b798))
+* **package:**
+  *  update mocha to version 3.5.3 ([c12c54f9](https://github.com/lgaticaq/hubot-info-rut/commit/c12c54f95a9d3cb81978903ba11981d907d044bd))
+  *  update codeclimate-test-reporter to version 0.5.0 ([14048dc9](https://github.com/lgaticaq/hubot-info-rut/commit/14048dc991fd3e9531e9aa0dffcf399223d1a2c8))
+  *  update chai to version 4.0.0 ([a403e173](https://github.com/lgaticaq/hubot-info-rut/commit/a403e1731c9d0d562e476814da113a2d09443e01))
+
+##### New Features
+
+* **source:**  Set min node version to v8 ([fc970d03](https://github.com/lgaticaq/hubot-info-rut/commit/fc970d0336c172fbb2e59d155cc52fb7ae815af7))
+
+##### Bug Fixes
+
+* **deps:**  update dependency coffee-script to v1.12.7 ([3c588ff4](https://github.com/lgaticaq/hubot-info-rut/commit/3c588ff430d1237814517039302baf43a1eb7abe))
+
+##### Refactors
+
+* **deps:**
+  *  renovate pin dependencies packages ([ac8bafa4](https://github.com/lgaticaq/hubot-info-rut/commit/ac8bafa4639b68e5f981263c1b99c50f0f0c8e5b))
+  *  renovate pin dependencies packages ([b862d2ce](https://github.com/lgaticaq/hubot-info-rut/commit/b862d2ce11f7c1d57a35522bf58854b3ed16e386))
+
 #### 2.0.3 (2017-3-20)
 
 ##### Chores
