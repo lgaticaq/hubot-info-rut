@@ -18,6 +18,8 @@ const infoRutStub = {
     return new Promise((resolve, reject) => {
       if (rut === '11111111-1') {
         return resolve('Anonymous')
+      } else if (rut === '22222222-2') {
+        return reject(new Error('Not found full name'))
       }
       reject(new Error('Not found'))
     })
@@ -86,6 +88,22 @@ describe('info rut', function () {
   })
 
   describe('rut invalid', () => {
+    const rut = '22222222-2'
+
+    beforeEach(async () => {
+      this.room.user.say('user', `hubot info-rut rut ${rut}`)
+      await sleep(1000)
+    })
+
+    it('should return a error', () => {
+      expect(this.room.messages).to.eql([
+        ['user', `hubot info-rut rut ${rut}`],
+        ['hubot', '@user rut sin resultados']
+      ])
+    })
+  })
+
+  describe('rut error', () => {
     const rut = '1'
 
     beforeEach(async () => {

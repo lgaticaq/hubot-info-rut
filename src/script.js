@@ -29,8 +29,12 @@ module.exports = robot => {
         res.send(`${fullName} (${rut})`)
       })
       .catch(err => {
-        res.reply('ocurrio un error al consultar el rut')
-        robot.emit('error', err, res)
+        if (err.message === 'Not found full name') {
+          res.reply('rut sin resultados')
+        } else {
+          res.reply('ocurrio un error al consultar el rut')
+          robot.emit('error', err, res)
+        }
       })
   })
 
