@@ -3,7 +3,7 @@
 const { describe, it, beforeEach, afterEach } = require('mocha')
 const Helper = require('hubot-test-helper')
 const { expect } = require('chai')
-const proxyquire = require('proxyquire')
+const mock = require('mock-require')
 const http = require('http')
 
 const sleep = m => new Promise(resolve => setTimeout(() => resolve(), m))
@@ -58,7 +58,7 @@ const infoRutStub = {
     })
   }
 }
-proxyquire('./../src/script.js', { 'info-rut': infoRutStub })
+mock('info-rut', infoRutStub)
 
 const helper = new Helper('./../src/index.js')
 
