@@ -6,7 +6,6 @@
   "scripts": {
     "lint": "eslint . --fix",
     "format": "prettier-standard 'src/**/*.js' 'test/**/*.js'",
-    "precommit": "lint-staged",
     "pretest": "npm run lint -s && npm run format -s",
     "test": "istanbul cover _mocha -- --exit",
     "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags && npm publish",
@@ -36,20 +35,20 @@
     "info-rut": "4.0.1"
   },
   "devDependencies": {
-    "chai": "4.1.2",
-    "eslint-config-standard": "11.0.0",
+    "chai": "4.2.0",
+    "eslint-config-standard": "12.0.0",
     "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-node": "6.0.1",
-    "eslint-plugin-promise": "3.8.0",
-    "eslint-plugin-standard": "3.1.0",
+    "eslint-plugin-node": "7.0.1",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-standard": "4.0.0",
     "generate-changelog": "1.7.1",
     "hubot-test-helper": "1.9.0",
-    "husky": "0.14.3",
+    "husky": "1.1.2",
     "istanbul": "0.4.5",
     "lint-staged": "7.3.0",
     "mocha": "5.2.0",
-    "prettier-standard": "8.0.1",
-    "proxyquire": "1.8.0"
+    "mock-require": "3.0.2",
+    "prettier-standard": "8.0.1"
   },
   "eslintConfig": {
     "extends": "standard",
@@ -62,6 +61,11 @@
   "eslintIgnore": [
     "coverage"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "linters": {
       "src/**/*.js": [
