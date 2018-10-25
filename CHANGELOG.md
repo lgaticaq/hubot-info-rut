@@ -1,3 +1,12 @@
+## [3.0.1](https://github.com/lgaticaq/hubot-info-rut/compare/v3.0.0...v3.0.1) (2018-10-25)
+
+
+### Bug Fixes
+
+* **deps:** fix deps vulnerabilities ([01de75a](https://github.com/lgaticaq/hubot-info-rut/commit/01de75a))
+* **deps:** update dependency info-rut to v4.0.1 ([4dd82bf](https://github.com/lgaticaq/hubot-info-rut/commit/4dd82bf))
+* **errors:** prevent emit error in invalid rut ([c9f990b](https://github.com/lgaticaq/hubot-info-rut/commit/c9f990b))
+
 ## 3.0.0 (2018-01-22)
 
 ##### Chores
