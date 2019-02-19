@@ -1,3 +1,20 @@
+# [4.0.0](https://github.com/lgaticaq/hubot-info-rut/compare/v3.0.1...v4.0.0) (2019-02-19)
+
+
+### Bug Fixes
+
+* **deps:** update info-rut to v5.0.0 ([987193c](https://github.com/lgaticaq/hubot-info-rut/commit/987193c))
+
+
+### Features
+
+* **node:** set min node version to v10 ([af8e9c7](https://github.com/lgaticaq/hubot-info-rut/commit/af8e9c7))
+
+
+### BREAKING CHANGES
+
+* **node:** Drop support to node v8
+
 ## [3.0.1](https://github.com/lgaticaq/hubot-info-rut/compare/v3.0.0...v3.0.1) (2018-10-25)
 
 
