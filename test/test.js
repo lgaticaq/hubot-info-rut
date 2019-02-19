@@ -9,39 +9,70 @@ const http = require('http')
 const sleep = m => new Promise(resolve => setTimeout(() => resolve(), m))
 const request = uri => {
   return new Promise((resolve, reject) => {
-    http.get(uri, response => resolve(response)).on('error', err => reject(err))
+    http
+      .get(uri, res => {
+        const result = { statusCode: res.statusCode }
+        if (res.statusCode !== 200) {
+          resolve(result)
+        } else {
+          res.setEncoding('utf8')
+          let rawData = ''
+          res.on('data', chunk => {
+            rawData += chunk
+          })
+          res.on('end', () => {
+            result.body = rawData
+            resolve(result)
+          })
+        }
+      })
+      .on('error', err => reject(err))
   })
 }
 
 const infoRutStub = {
-  getFullName (rut) {
+  getPersonByRut (rut) {
     return new Promise((resolve, reject) => {
       if (rut === '11111111-1') {
-        return resolve('Anonymous')
+        return resolve({ name: 'Anonymous', rut })
+      } else if (rut === '77777777-7') {
+        return resolve({ name: 'Sushi', rut })
       } else if (rut === '22222222-2') {
-        return reject(new Error('Not found full name'))
+        return resolve(null)
       }
       reject(new Error('Not found'))
     })
   },
-  getPersonRut (name) {
+  getEnterpriseByRut (rut) {
+    return new Promise((resolve, reject) => {
+      if (rut === '11111111-1') {
+        return resolve({ name: 'Anonymous', rut })
+      } else if (rut === '77777777-7') {
+        return resolve({ name: 'Sushi', rut })
+      } else if (rut === '22222222-2') {
+        return resolve(null)
+      }
+      reject(new Error('Not found'))
+    })
+  },
+  getPersonByName (name) {
     return new Promise((resolve, reject) => {
       if (name === 'juan perez perez') {
         return resolve([
-          { rut: '11.111.111-1', fullName: 'Anonymous' },
-          { rut: '11.111.111-1', fullName: 'Anonymous' },
-          { rut: '11.111.111-1', fullName: 'Anonymous' },
-          { rut: '11.111.111-1', fullName: 'Anonymous' },
-          { rut: '11.111.111-1', fullName: 'Anonymous' },
-          { rut: '11.111.111-1', fullName: 'Anonymous' }
+          { rut: '11.111.111-1', name: 'Anonymous' },
+          { rut: '11.111.111-1', name: 'Anonymous' },
+          { rut: '11.111.111-1', name: 'Anonymous' },
+          { rut: '11.111.111-1', name: 'Anonymous' },
+          { rut: '11.111.111-1', name: 'Anonymous' },
+          { rut: '11.111.111-1', name: 'Anonymous' }
         ])
       } else if (name === 'soto') {
         return resolve([
-          { rut: '11.111.111-1', fullName: 'Anonymous' },
-          { rut: '11.111.111-1', fullName: 'Anonymous' },
-          { rut: '11.111.111-1', fullName: 'Anonymous' },
-          { rut: '11.111.111-1', fullName: 'Anonymous' },
-          { rut: '11.111.111-1', fullName: 'Anonymous' }
+          { rut: '11.111.111-1', name: 'Anonymous' },
+          { rut: '11.111.111-1', name: 'Anonymous' },
+          { rut: '11.111.111-1', name: 'Anonymous' },
+          { rut: '11.111.111-1', name: 'Anonymous' },
+          { rut: '11.111.111-1', name: 'Anonymous' }
         ])
       } else if (name === 'info-rut') {
         return resolve([])
@@ -49,10 +80,10 @@ const infoRutStub = {
       reject(new Error('Not found'))
     })
   },
-  getEnterpriseRut (name) {
+  getEnterpriseByName (name) {
     return new Promise((resolve, reject) => {
       if (name === 'perez') {
-        return resolve([{ rut: '11.111.111-1', fullName: 'Anonymous' }])
+        return resolve([{ rut: '11.111.111-1', name: 'Anonymous' }])
       } else if (name === 'info-rut') {
         return resolve([])
       }
@@ -71,7 +102,7 @@ describe('info rut', function () {
 
   afterEach(() => this.room.destroy())
 
-  describe('rut valid', () => {
+  describe('person rut valid', () => {
     const rut = '11111111-1'
 
     beforeEach(async () => {
@@ -83,6 +114,22 @@ describe('info rut', function () {
       expect(this.room.messages).to.eql([
         ['user', `hubot info-rut rut ${rut}`],
         ['hubot', `Anonymous (${rut})`]
+      ])
+    })
+  })
+
+  describe('enterprise rut valid', () => {
+    const rut = '77777777-7'
+
+    beforeEach(async () => {
+      this.room.user.say('user', `hubot info-rut rut ${rut}`)
+      await sleep(1000)
+    })
+
+    it('should return a full name', () => {
+      expect(this.room.messages).to.eql([
+        ['user', `hubot info-rut rut ${rut}`],
+        ['hubot', `Sushi (${rut})`]
       ])
     })
   })
@@ -203,12 +250,20 @@ describe('info rut', function () {
   describe('GET /info-rut?name=perez&type=persona', () => {
     beforeEach(async () => {
       this.response = await request(
-        'http://localhost:8080/info-rut?name=perez&type=persona'
+        'http://localhost:8080/info-rut?name=juan%20perez%20perez&type=persona'
       )
     })
 
     it('responds with status 200 and results', () => {
       expect(this.response.statusCode).to.equal(200)
+      expect(this.response.body).to.equal(
+        'Anonymous (11.111.111-1)<br/>' +
+          'Anonymous (11.111.111-1)<br/>' +
+          'Anonymous (11.111.111-1)<br/>' +
+          'Anonymous (11.111.111-1)<br/>' +
+          'Anonymous (11.111.111-1)<br/>' +
+          'Anonymous (11.111.111-1)'
+      )
     })
   })
 
@@ -221,6 +276,7 @@ describe('info rut', function () {
 
     it('responds with status 200 and results', () => {
       expect(this.response.statusCode).to.equal(200)
+      expect(this.response.body).to.equal('Anonymous (11.111.111-1)')
     })
   })
 
@@ -233,6 +289,33 @@ describe('info rut', function () {
 
     it('responds with status 200 and not results', () => {
       expect(this.response.statusCode).to.equal(200)
+      expect(this.response.body).to.equal('no hay resultados para info-rut')
+    })
+  })
+
+  describe('GET /info-rut', () => {
+    beforeEach(async () => {
+      this.response = await request('http://localhost:8080/info-rut')
+    })
+
+    it('responds with status 200 and not results', () => {
+      expect(this.response.statusCode).to.equal(200)
+      expect(this.response.body).to.equal('faltan los parametros type y name')
+    })
+  })
+
+  describe('GET /info-rut?name=asdf&type=persona', () => {
+    beforeEach(async () => {
+      this.response = await request(
+        'http://localhost:8080/info-rut?name=asdf&type=persona'
+      )
+    })
+
+    it('responds with status 200 and not results', () => {
+      expect(this.response.statusCode).to.equal(200)
+      expect(this.response.body).to.equal(
+        'Ocurrio un error al consultar el nombre'
+      )
     })
   })
 })

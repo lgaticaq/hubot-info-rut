@@ -1,8 +1,8 @@
-// Description
+// Description:
 //   Obtiene el nombre de la persona o empresa del RUT consultado y viceversa
 //
 // Dependencies:
-//   "info-rut": "^4.0.0"
+//   "info-rut": "^5.0.0"
 //
 // Configuration:
 //   HUBOT_URL
@@ -20,21 +20,24 @@
 const querystring = require('querystring')
 const infoRut = require('info-rut')
 
+const isEnterprise = rut => {
+  return rut.replace(/[.-]/g, '').length === 9 && Number(rut[0]) > 5
+}
+
 module.exports = robot => {
   robot.respond(/info-rut rut (.*)/i, res => {
     const rut = res.match[1]
-    infoRut
-      .getFullName(rut)
-      .then(fullName => {
-        res.send(`${fullName} (${rut})`)
+    const fn = isEnterprise(rut)
+      ? infoRut.getEnterpriseByRut
+      : infoRut.getPersonByRut
+    fn(rut)
+      .then(result => {
+        if (!result) return res.reply('rut sin resultados')
+        res.send(`${result.name} (${result.rut})`)
       })
       .catch(err => {
-        if (err.message === 'Not found full name') {
-          res.reply('rut sin resultados')
-        } else {
-          res.reply('ocurrio un error al consultar el rut')
-          robot.emit('error', err, res)
-        }
+        res.reply('ocurrio un error al consultar el rut')
+        robot.emit('error', err, res)
       })
   })
 
@@ -42,8 +45,9 @@ module.exports = robot => {
     const type = res.match[1]
     const name = res.match[2]
     const url = process.env.HUBOT_URL || 'http://localhost:8080'
-    const fn = type === 'persona' ? 'getPersonRut' : 'getEnterpriseRut'
-    infoRut[fn](name)
+    const fn =
+      type === 'persona' ? infoRut.getPersonByName : infoRut.getEnterpriseByName
+    fn(name)
       .then(results => {
         if (results.length > 5) {
           const query = querystring.stringify({ name, type })
@@ -51,12 +55,12 @@ module.exports = robot => {
           res.send(
             results
               .slice(0, 5)
-              .map(r => `${r.fullName} (${r.rut})`)
+              .map(r => `${r.name} (${r.rut})`)
               .join('\n')
               .concat(more)
           )
         } else if (results.length > 0) {
-          res.send(results.map(r => `${r.fullName} (${r.rut})`).join('\n'))
+          res.send(results.map(r => `${r.name} (${r.rut})`).join('\n'))
         } else {
           res.reply(`no hay resultados para ${name}`)
         }
@@ -68,13 +72,15 @@ module.exports = robot => {
   })
 
   robot.router.get('/info-rut', (req, res) => {
-    const type = req.query.type || 'persona'
-    const name = req.query.name || ''
-    const fn = type === 'persona' ? 'getPersonRut' : 'getEnterpriseRut'
-    infoRut[fn](name)
+    const type = req.query.type
+    const name = req.query.name
+    if (!type && !name) return res.send('faltan los parametros type y name')
+    const fn =
+      type === 'persona' ? infoRut.getPersonByName : infoRut.getEnterpriseByName
+    fn(name)
       .then(results => {
         if (results.length > 0) {
-          res.send(results.map(r => `${r.fullName} (${r.rut})`).join('<br/>'))
+          res.send(results.map(r => `${r.name} (${r.rut})`).join('<br/>'))
         } else {
           res.send(`no hay resultados para ${name}`)
         }
