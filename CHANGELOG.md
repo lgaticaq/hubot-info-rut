@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/lgaticaq/hubot-info-rut/compare/v4.0.0...v4.0.1) (2019-02-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency info-rut to v5.0.1 ([4433724](https://github.com/lgaticaq/hubot-info-rut/commit/4433724))
+
 # [4.0.0](https://github.com/lgaticaq/hubot-info-rut/compare/v3.0.1...v4.0.0) (2019-02-19)
 
 
