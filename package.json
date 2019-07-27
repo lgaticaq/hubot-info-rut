@@ -7,7 +7,8 @@
     "lint": "eslint . --fix",
     "format": "prettier-standard 'src/**/*.js' 'test/**/*.js'",
     "commit": "commit",
-    "test": "nyc mocha --exit"
+    "test": "nyc mocha --exit",
+    "snyk-protect": "snyk protect"
   },
   "engines": {
     "node": ">=10"
@@ -55,7 +56,8 @@
     "nyc": "14.1.1",
     "nyc-config-common": "1.0.1",
     "prettier-standard": "9.1.1",
-    "semantic-release": "15.13.18"
+    "semantic-release": "15.13.18",
+    "snyk": "1.192.4"
   },
   "eslintConfig": {
     "extends": "standard",
@@ -75,18 +77,11 @@
     }
   },
   "lint-staged": {
-    "linters": {
-      "src/**/*.js": [
-        "eslint --fix",
-        "prettier-standard",
-        "git add"
-      ],
-      "test/**/*.js": [
-        "eslint --fix",
-        "prettier-standard",
-        "git add"
-      ]
-    }
+    "{src,test}/**/*.js": [
+      "eslint --fix",
+      "prettier-standard",
+      "git add"
+    ]
   },
   "renovate": {
     "automerge": "minor",
@@ -104,5 +99,6 @@
   },
   "release": {
     "extends": "npm-github-config"
-  }
+  },
+  "snyk": true
 }
