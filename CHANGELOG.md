@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/lgaticaq/hubot-info-rut/compare/v4.0.1...v4.0.2) (2019-07-27)
+
+
+### Bug Fixes
+
+* .snyk, package.json & package-lock.json to reduce vulnerabilities ([de239f2](https://github.com/lgaticaq/hubot-info-rut/commit/de239f2))
+
 ## [4.0.1](https://github.com/lgaticaq/hubot-info-rut/compare/v4.0.0...v4.0.1) (2019-02-20)
 
 
