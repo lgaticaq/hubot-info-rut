@@ -7,7 +7,8 @@
     "lint": "eslint . --fix",
     "format": "prettier-standard 'src/**/*.js' 'test/**/*.js'",
     "test": "nyc mocha --exit",
-    "snyk-protect": "snyk protect"
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "engines": {
     "node": ">=10"
@@ -29,7 +30,8 @@
   },
   "homepage": "https://github.com/lgaticaq/hubot-info-rut#readme",
   "dependencies": {
-    "info-rut": "5.0.2"
+    "info-rut": "5.0.2",
+    "snyk": "^1.319.0"
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
@@ -54,8 +56,7 @@
     "nyc": "14.1.1",
     "nyc-config-common": "1.0.1",
     "prettier-standard": "15.0.1",
-    "semantic-release": "15.14.0",
-    "snyk": "1.309.0"
+    "semantic-release": "15.14.0"
   },
   "eslintConfig": {
     "extends": "standard",
