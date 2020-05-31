@@ -28,13 +28,5 @@ jobs:
         - "12.7.0"
         - "10.16.0"
       script: npm t
-    - stage: coverage
-      install:
-        - npm i -g coveralls codeclimate-test-reporter
-      script:
-        - npm run coverage
-      after_success:
-        - npx nyc report --reporter=text-lcov | coveralls
-        - npx nyc report --reporter=text-lcov | codeclimate-test-reporter
     - stage: deploy
       script: npx semantic-release
