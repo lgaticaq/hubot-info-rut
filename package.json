@@ -1,6 +1,6 @@
 {
   "name": "hubot-info-rut",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "Un script hubot para obtener a quien pertenece un determinado RUT",
   "main": "src",
   "scripts": {
