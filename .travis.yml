@@ -32,7 +32,7 @@ jobs:
       install:
         - npm i -g coveralls codeclimate-test-reporter
       script:
-        - npx nyc check-coverage --lines 100 --per-file
+        - npm run coverage
       after_success:
         - npx nyc report --reporter=text-lcov | coveralls
         - npx nyc report --reporter=text-lcov | codeclimate-test-reporter
