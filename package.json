@@ -34,6 +34,7 @@
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
+    "@eclass/semantic-release-npm-github-config": "3.0.1",
     "@semantic-release/changelog": "5.0.1",
     "@semantic-release/git": "9.0.0",
     "@semantic-release/github": "7.0.7",
@@ -50,7 +51,6 @@
     "lint-staged": "10.2.7",
     "mocha": "7.2.0",
     "mock-require": "3.0.3",
-    "npm-github-config": "2.0.1",
     "nyc": "15.0.1",
     "nyc-config-common": "1.0.1",
     "prettier-standard": "16.3.0",
@@ -96,7 +96,7 @@
     "extends": "nyc-config-common"
   },
   "release": {
-    "extends": "npm-github-config"
+    "extends": "@eclass/semantic-release-npm-github-config"
   },
   "snyk": true
 }
