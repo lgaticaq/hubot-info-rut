@@ -38,7 +38,7 @@
     "@eclass/semantic-release-npm-github-config": "3.0.1",
     "@semantic-release/changelog": "5.0.1",
     "@semantic-release/git": "9.0.0",
-    "@semantic-release/github": "7.1.0",
+    "@semantic-release/github": "7.1.1",
     "@semantic-release/npm": "7.0.6",
     "chai": "4.2.0",
     "eslint": "7.9.0",
@@ -55,7 +55,7 @@
     "nyc": "15.1.0",
     "nyc-config-common": "1.0.1",
     "prettier-standard": "16.4.1",
-    "semantic-release": "17.1.1",
+    "semantic-release": "17.1.2",
     "snyk": "1.398.0"
   },
   "eslintConfig": {
