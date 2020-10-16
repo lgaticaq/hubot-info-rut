@@ -56,7 +56,7 @@
     "nyc-config-common": "1.0.1",
     "prettier-standard": "16.4.1",
     "semantic-release": "17.2.1",
-    "snyk": "1.414.0"
+    "snyk": "1.414.1"
   },
   "eslintConfig": {
     "extends": "standard",
