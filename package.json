@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/lgaticaq/hubot-info-rut#readme",
   "dependencies": {
-    "info-rut": "5.0.3"
+    "info-rut": "5.0.4"
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
